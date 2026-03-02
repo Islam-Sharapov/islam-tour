@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ISLAM TOUR — Египет & Дубай (AI)</title>
+  <link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <img class="atu-logo"
+           src="https://atu.edu.kz/templates/release/images/flogos/feit.webp"
+           alt="Эмблема АТУ">
+      <div>
+        <div class="brand-title">ISLAM TOUR</div>
+        <div class="brand-subtitle">Учебный проект • АТУ • HTML + CSS + JS + Python (монолит)</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#tours">Туры</a>
+      <a href="#ai">AI-чат</a>
+      <a href="#about">О проекте</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="pill">Разработка веб-приложения для туристического агентства с ИИ</div>
+        <h1>Египет и Дубай — путешествия “по красоте”</h1>
+        <p class="muted">
+          Выбери тур по бюджету и стилю отдыха. Ниже — витрина туров и AI-консультант (ChatGPT API).
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#tours">Выбрать тур</a>
+          <a class="btn btn-ghost" href="#ai">Спросить AI</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><div class="stat-num">2</div><div class="stat-label">направления</div></div>
+          <div class="stat"><div class="stat-num">6</div><div class="stat-label">примеров туров</div></div>
+          <div class="stat"><div class="stat-num">AI</div><div class="stat-label">подбор/советы</div></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-title">Топ направления</div>
+
+          <div class="hero-card-grid">
+            <div class="mini-card">
+              <img src="https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=900&q=80" alt="Египет">
+              <div class="mini-card-body">
+                <div class="mini-card-name">Египет</div>
+                <div class="mini-card-meta">пирамиды • море • экскурсии</div>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" alt="Дубай">
+              <div class="mini-card-body">
+                <div class="mini-card-name">Дубай</div>
+                <div class="mini-card-meta">люкс • шопинг • небоскрёбы</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="note">
+            💡 Напиши в чат: “Египет, 7 дней, до 170000 KZT, 2 человека, пляж”
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tours" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Витрина туров</h2>
+          <p class="muted">Фильтры по стране + мини-рекомендации (JS)</p>
+        </div>
+
+        <div class="filters">
+          <button class="chip is-active" data-filter="all">Все</button>
+          <button class="chip" data-filter="egypt">Египет</button>
+          <button class="chip" data-filter="dubai">Дубай</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="field">
+          <label>Бюджет (KZT)</label>
+          <input id="budgetInput" type="number" placeholder="например 180000" min="0">
+        </div>
+
+        <div class="field">
+          <label>Стиль отдыха</label>
+          <select id="styleSelect">
+            <option value="any">Любой</option>
+            <option value="beach">Пляж</option>
+            <option value="excursions">Экскурсии</option>
+            <option value="luxury">Люкс</option>
+            <option value="shopping">Шопинг</option>
+            <option value="family">Семейный</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Длительность</label>
+          <select id="daysSelect">
+            <option value="any">Любая</option>
+            <option value="4">4 дня</option>
+            <option value="5">5 дней</option>
+            <option value="7">7 дней</option>
+            <option value="10">10 дней</option>
+          </select>
+        </div>
+
+        <button id="recommendBtn" class="btn btn-dark">Показать лучшие варианты</button>
+      </div>
+
+      <div id="tourList" class="grid"></div>
+    </div>
+  </section>
+
+  <section id="ai" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>AI-консультант (ChatGPT API)</h2>
+          <p class="muted">
+            Всё в монолите: сервер раздаёт фронт и принимает запросы на /api/chat.
+            Ключ хранится на сервере (env).
+          </p>
+        </div>
+        <div class="hint">Проверка: <span class="kbd">/health</span></div>
+      </div>
+
+      <div class="chat">
+        <div id="chatBox" class="chat-box"></div>
+
+        <div class="chat-row">
+          <input id="chatInput" type="text" placeholder='Например: "Дубай, 5 дней, до 230000 KZT, шопинг"' />
+          <button id="sendBtn" class="btn">Отправить</button>
+        </div>
+
+        <div class="chat-tips muted">
+          Формат: <b>страна</b>, <b>дней/даты</b>, <b>бюджет</b>, <b>люди</b>, <b>стиль</b>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about">
+        <h2>О проекте</h2>
+        <p class="muted">
+          Учебный проект для <b>Ислам Шарапов</b> (АТУ). Тема:
+          разработка веб-приложения туристического агентства с элементами ИИ для туристической отрасли
+          (направления: Египет, Дубай).
+        </p>
+
+        <div class="about-grid">
+          <div class="card">
+            <div class="card-title">Что реализовано</div>
+            <ul>
+              <li>Витрина туров + фильтр</li>
+              <li>Рекомендации по бюджету/стилю/дням</li>
+              <li>AI-чатбот через OpenAI API</li>
+              <li>Монолит: один сервер</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Можно улучшить</div>
+            <ul>
+              <li>Заявка на бронирование + сохранение</li>
+              <li>История чата на сервере</li>
+              <li>Стриминг ответа (эффект “печатает…”)</li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="footer muted">© ISLAM TOUR • АТУ • 2026</footer>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/app.js?v=1"></script>
+</body>
+</html>
