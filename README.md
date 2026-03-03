@@ -2,7 +2,6 @@
 
 ## Ислам Шарапов  
 ## ИС 23-22  
-https://atu.edu.kz/templates/release/images/flogos/feit.webp
 
 ### Описание проекта
 Islam Tour — это учебный веб-проект туристического сайта.  
